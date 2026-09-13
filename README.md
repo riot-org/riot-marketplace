@@ -1,54 +1,32 @@
-# riot-pkg
+# riot-marketplace
 
-[Riot](https://github.com/caiwuu/Riot) 的官方插件市场。
+[Riot](https://github.com/riot-org/Riot) 的官方插件目录。仓库里只有 `marketplace.json`，每个插件自己一个 Git 仓库。
 
-Riot 主程序里不带 Python、Node、LibreOffice 这些东西 —— 装机量最大的那部分用户
-根本用不到文档处理，为它们把安装包撑到几百 MB 不划算。需要的人在设置 → 插件里
-点一下安装，按平台下载对应的包。
+Riot 读这份清单（设置 → 插件 → 市场）。默认源是 `riot-org/riot-marketplace`。
 
-## 仓库布局
+## 上架一个插件
 
+1. 把插件放到自己的 Git 仓库（根上有 `plugin.json` / `.claude-plugin/plugin.json` / `.cursor-plugin/plugin.json`）。
+2. 给本仓库提 PR，在 `marketplace.json` 的 `plugins` 里加一条。
+
+普通插件（clone 即装）：
+
+```json
+{
+  "name": "my-linter",
+  "description": "……",
+  "source": { "source": "github", "repo": "you/my-linter" }
+}
 ```
-marketplace.json               发布清单，Riot 读的就是它
-doc-runtime/
-  darwin-arm64/
-    marketplace.json           这个平台构建时产出的清单片段
-    doc-runtime-0.2.0-darwin-arm64.tar.zst
-  win-x64/
-    marketplace.json
-    doc-runtime-0.2.0-win-x64.tar.zst
-```
 
-插件名在平台上面 —— 这个仓库以后不止装文档一个插件，按平台分在最外层的话，一个
-插件的东西会散在各平台目录里，想知道仓库里有哪些插件得把每个平台目录都翻一遍。
+带几百 MB 二进制的插件走 Releases，`source` 写成 `archive`，`url` 指**插件仓库**的 Release，不要指本仓库。范例见现有的 `doc-runtime`（仓库 [`riot-org/plugin-doc-runtime`](https://github.com/riot-org/plugin-doc-runtime)）。
 
-`.tar.zst` **不在 git 里**（见 `.gitignore`）。GitHub 拒收超过 100MB 的单个文件，
-而一个包两百多 MB；Git LFS 的免费额度也撑不住这个量级的下载。包体走 Releases，
-仓库里只留清单。
+同一作者、强绑定的一组小插件可以共一个仓库，用 `"path": "plugins/foo"`。
 
-包必须在对应平台的机器上制作 —— `skia.node` 之类的原生绑定按平台编译，没法交叉
-产出。两台机器各写各的平台目录，`publish.mjs` 再把两份清单并成根目录那一份。
+没进这份目录的人，对方仍可在 Riot 里「从 Git 安装」，或在市场列表里加自己的 `owner/repo`。
 
 ## 现有的插件
 
-| 插件 | 内容 | 压缩后 | 安装后 |
-| --- | --- | --- | --- |
-| `doc-runtime` | Python + Node + LibreOffice + Poppler，以及 docx/xlsx/pptx/pdf 四个 skill | ~235MB（darwin-arm64） | ~910MB |
-
-## 发布
-
-在 Riot 仓库里：
-
-```bash
-# macOS 上
-node scripts/build-doc-plugin.mjs
-
-# Windows 上
-pwsh scripts/build-doc-plugin.ps1
-
-# 任一台机器上，等两个平台的产物都到齐之后
-node scripts/doc-plugin/publish.mjs
-```
-
-`publish.mjs` 会合并清单、比对每个包的 sha256、把 `.tar.zst` 传到 Releases，最后
-提交 `marketplace.json`。清单最后推：Riot 一读到新清单就会去下对应的资产。
+| 插件 | 仓库 | 内容 |
+| --- | --- | --- |
+| `doc-runtime` | [plugin-doc-runtime](https://github.com/riot-org/plugin-doc-runtime) | Word / Excel / PPT / PDF 运行时（按平台打包） |
