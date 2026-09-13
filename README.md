@@ -29,4 +29,4 @@ Riot 读这份清单（设置 → 插件 → 市场）。默认源是 `riot-org/
 
 | 插件 | 仓库 | 内容 |
 | --- | --- | --- |
-| `doc-runtime` | [plugin-doc-runtime](https://github.com/riot-org/plugin-doc-runtime) | Word / Excel / PPT / PDF 运行时（按平台打包） |
+| `doc-runtime` | [plugin-doc-runtime](https://github.com/riot-org/plugin-doc-runtime) | Word / Excel / PPT / PDF。仓库是源码，安装包走 Releases |
