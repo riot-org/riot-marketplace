@@ -10,21 +10,21 @@
         "source": "archive",
         "platforms": {
           "darwin-arm64": {
-            "url": "https://github.com/riot-org/riot-plugin-doc/releases/download/doc-runtime-v0.2.0/riot-plugin-doc-0.2.0-darwin-arm64.tar.zst",
-            "sha256": "cf8269ec67b8380714b968c9bb1f2f5917405b2ae588ba4c2463350c85899712",
-            "size": 246600000,
+            "url": "https://github.com/riot-org/riot-plugin-doc/releases/download/riot-plugin-doc-v0.2.2/riot-plugin-doc-0.2.2-darwin-arm64.tar.zst",
+            "sha256": "0d1604cc345805887a8c74d422dd268d826baafa02ac9e9452a357bd387fff80",
+            "size": 246562249,
             "installedSize": 940228608
           },
           "win-x64": {
-            "url": "https://github.com/riot-org/riot-plugin-doc/releases/download/doc-runtime-v0.2.0/riot-plugin-doc-0.2.0-win-x64.tar.zst",
-            "sha256": "eb0620ebb87f06f107245db9893cba8328ecd15f6b1931db78ea9e73c94facae",
-            "size": 328343428,
-            "installedSize": 1137031574
+            "url": "https://github.com/riot-org/riot-plugin-doc/releases/download/riot-plugin-doc-v0.2.2/riot-plugin-doc-0.2.2-win-x64.tar.zst",
+            "sha256": "34b9a608448386c8e445764bd8a529fc42300942efccd1473a3cdc67a7ce6599",
+            "size": 328346595,
+            "installedSize": 1137031575
           }
         }
       },
       "description": "创建和编辑 Word、Excel、PowerPoint、PDF。自带 Python、Node、LibreOffice 和中文字体，不需要电脑上装任何开发环境。",
-      "version": "0.2.0",
+      "version": "0.2.2",
       "author": {
         "name": "Riot"
       },
