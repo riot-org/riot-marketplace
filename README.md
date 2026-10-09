@@ -19,7 +19,7 @@ Riot 读这份清单（设置 → 插件 → 市场）。默认源是 `riot-org/
 }
 ```
 
-带几百 MB 二进制的插件走 Releases，`source` 写成 `archive`，`url` 指**插件仓库**的 Release，不要指本仓库。范例见现有的 `doc-runtime`（仓库 [`riot-org/plugin-doc-runtime`](https://github.com/riot-org/plugin-doc-runtime)）。
+带几百 MB 二进制的插件走 Releases，`source` 写成 `archive`，`url` 指**插件仓库**的 Release，不要指本仓库。范例见现有的 `riot-plugin-doc`（仓库 [`riot-org/riot-plugin-doc`](https://github.com/riot-org/riot-plugin-doc)）。
 
 同一作者、强绑定的一组小插件可以共一个仓库，用 `"path": "plugins/foo"`。
 
@@ -29,4 +29,4 @@ Riot 读这份清单（设置 → 插件 → 市场）。默认源是 `riot-org/
 
 | 插件 | 仓库 | 内容 |
 | --- | --- | --- |
-| `doc-runtime` | [plugin-doc-runtime](https://github.com/riot-org/plugin-doc-runtime) | Word / Excel / PPT / PDF。仓库是源码，安装包走 Releases |
+| `riot-plugin-doc` | [riot-plugin-doc](https://github.com/riot-org/riot-plugin-doc) | Word / Excel / PPT / PDF。仓库是源码，安装包走 Releases |
